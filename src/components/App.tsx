@@ -1,7 +1,7 @@
-import logo from '../resources/logo.svg'
-import styles from './App.module.css'
-import React, { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import logo from '../resources/logo.svg';
+import styles from './App.module.css';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // const Home = lazy(() => import('./routes/Home'));
 // const About = lazy(() => import('./routes/About'));
@@ -24,8 +24,8 @@ const Home = () => {
         </a>
       </header>
     </div>
-  )
-}
+  );
+};
 
 const App = () => (
   <Router>
@@ -35,6 +35,6 @@ const App = () => (
       </Routes>
     </Suspense>
   </Router>
-)
+);
 
-export default App
+export default App;
