@@ -1,8 +1,8 @@
-export interface _fetch {
+export interface I_fetch {
   url: string;
   params: Record<string, unknown>;
-  options: RequestInit;
-  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  options?: RequestInit;
+  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 }
 
 const _fetch = async ({
@@ -10,7 +10,7 @@ const _fetch = async ({
   params = {},
   method = 'GET',
   options = {},
-}: _fetch): Promise<unknown> => {
+}: I_fetch): Promise<unknown> => {
   const bearer = 'Bearer ' + localStorage.getItem('user_token'); // or something
 
   const baseOptions = {
