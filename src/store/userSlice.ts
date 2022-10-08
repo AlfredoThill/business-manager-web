@@ -23,6 +23,6 @@ export const userSlice = createSlice({
 
 export const { setToken } = userSlice.actions;
 
-export const selectToken = (state: RootState) => state.user.token;
+export const selectToken = (state: RootState): IuserState['token'] => state.user.token;
 
 export default userSlice.reducer;

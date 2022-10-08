@@ -1,10 +1,9 @@
 import logo from '../resources/logo.svg';
 import styles from './App.module.css';
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// const Home = lazy(() => import('./routes/Home'));
-// const About = lazy(() => import('./routes/About'));
+import { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useAppSelector } from '../store/hooks';
+import { Login } from './routes';
 
 const Home = () => {
   return (
@@ -27,14 +26,18 @@ const Home = () => {
   );
 };
 
-const App = () => (
-  <Router>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
-    </Suspense>
-  </Router>
-);
+const App = () => {
+  const user = useAppSelector((store) => store.user);
+  return (
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/' element={user.isLogged ? <Home /> : <Navigate to='/login' />} />
+        </Routes>
+      </Suspense>
+    </Router>
+  );
+};
 
 export default App;
