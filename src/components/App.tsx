@@ -34,6 +34,7 @@ const App = () => {
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/' element={user.isLogged ? <Home /> : <Navigate to='/login' />} />
+          {/* <Route path='/' element={<Home />} /> */}
         </Routes>
       </Suspense>
     </Router>

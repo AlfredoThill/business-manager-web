@@ -1,5 +1,4 @@
 import CustomInput from '../../common/CustomInput';
-import { Button } from '@mui/material';
 
 export interface ILogin {
   handleLogin(): void;
@@ -19,27 +18,14 @@ const Login: React.FC<ILogin> = ({
   return (
     <div>
       <form>
-        <CustomInput
-          labelText='Email'
-          id='email'
-          formControlProps={{
-            fullWidth: true,
-          }}
-          handleChange={handleEmailChange}
-          type='text'
-        />
+        <CustomInput labelText='Email' id='email' handleChange={handleEmailChange} type='email' />
         <CustomInput
           labelText='Password'
           id='password'
-          formControlProps={{
-            fullWidth: true,
-          }}
           handleChange={handlePasswordChange}
           type='password'
         />
-        <Button type='button' color='primary' onClick={handleLogin}>
-          Log in
-        </Button>
+        <button onClick={handleLogin}>Log in</button>
       </form>
     </div>
   );
