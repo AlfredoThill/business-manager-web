@@ -11,6 +11,11 @@ const LoginContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const validate = (currEmail: string, currPassword: string): boolean => {
+    if (!currEmail || !currPassword) return false;
+    return true;
+  };
+
   const handleLogin = (): void => {
     setIsLoading(true);
     userApi

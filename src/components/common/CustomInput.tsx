@@ -1,39 +1,41 @@
+import { HTMLInputTypeAttribute, SyntheticEvent } from 'react';
 import {
-  HTMLInputTypeAttribute,
-  InputHTMLAttributes,
-  LabelHTMLAttributes,
-  HTMLAttributes,
-  ChangeEvent,
-} from 'react';
+  FormControl,
+  FormControlProps,
+  InputLabel,
+  InputLabelProps,
+  Input,
+  InputProps,
+} from '@mui/material';
 
 export interface IcustomInput {
+  formControlProps?: FormControlProps;
   labelText: string;
   id: string;
+  labelProps?: InputLabelProps;
+  inputProps?: InputProps;
+  handleChange(event: SyntheticEvent): void;
   type: HTMLInputTypeAttribute;
-  inputProps?: InputHTMLAttributes<HTMLInputElement>;
-  labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
-  containerProps?: HTMLAttributes<HTMLDivElement>;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CustomInput: React.FC<IcustomInput> = ({
+  formControlProps,
   labelText,
   id,
-  type,
-  handleChange,
-  inputProps,
   labelProps,
-  containerProps,
+  inputProps,
+  handleChange,
+  type,
 }: IcustomInput) => {
   return (
-    <div {...containerProps}>
+    <FormControl {...formControlProps}>
       {labelText !== undefined ? (
-        <label htmlFor={id} {...labelProps}>
+        <InputLabel htmlFor={id} {...labelProps}>
           {labelText}
-        </label>
+        </InputLabel>
       ) : null}
-      <input id={id} onChange={handleChange} {...inputProps} type={type} />
-    </div>
+      <Input id={id} onChange={handleChange} {...inputProps} type={type} />
+    </FormControl>
   );
 };
 
